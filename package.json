@@ -15,14 +15,18 @@
     "postinstall": "prisma generate"
   },
   "dependencies": {
-    "@prisma/client": "5.19.1",
+    "@auth/prisma-adapter": "^2.7.4",
+    "@prisma/client": "^6.0.1",
     "@supabase/supabase-js": "2.45.4",
+    "antd": "^5.20.6",
+    "bcryptjs": "^2.4.3",
     "next": "14.2.11",
     "next-auth": "^5.0.0-beta.25",
     "react": "^18",
     "react-dom": "^18"
   },
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",

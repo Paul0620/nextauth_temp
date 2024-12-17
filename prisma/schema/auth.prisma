@@ -2,6 +2,7 @@ model User {
   id        String   @id @default(cuid())
   email     String   @unique @db.VarChar(255)
   password  String?  @db.VarChar(255)
+  emailVerified DateTime? @map("email_verified")
   name      String?  @db.VarChar(255)
   
   createdAt DateTime @default(now()) @map("created_at")
