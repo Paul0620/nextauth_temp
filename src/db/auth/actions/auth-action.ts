@@ -1,6 +1,6 @@
 "use server";
 
-import { hashPassword } from "@/core/utils/password-util";
+import { saltAndHashPassword } from "@/core/utils/password";
 import { prisma } from "@/lib/prisma";
 
 export interface SignUpFormData {
@@ -21,7 +21,7 @@ export const handleSignUp = async (data: SignUpFormData) => {
   }
 
   const user = await prisma.user.create({
-    data: { email, password: await hashPassword(password), name },
+    data: { email, password: saltAndHashPassword(password), name },
   });
 
   return user;
