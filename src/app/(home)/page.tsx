@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-      Home 입니다 123
+      메인페이지
       <div>{session?.user ? session.user.name : "정보없음"}</div>
     </>
   );

@@ -1,8 +1,8 @@
 import NextAuth from "next-auth";
 import Credentials from "next-auth/providers/credentials";
 import { prisma } from "./prisma";
-import { saltAndHashPassword } from "@/core/utils/password";
 import { PrismaAdapter } from "@auth/prisma-adapter";
+import { compareSync } from "bcryptjs";
 
 export const { signIn, signOut, auth, handlers } = NextAuth({
   providers: [
@@ -16,16 +16,16 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
 
         const { email, password } = credentials;
 
-        const pwHash = saltAndHashPassword(password as string);
-
         user = await prisma.user.findFirst({
           where: {
             email: email as string,
-            password: pwHash,
           },
         });
 
-        if (!user) {
+        if (
+          !user ||
+          !compareSync(password as string, user.password as string)
+        ) {
           throw new Error("Invalid credentials");
         }
 
