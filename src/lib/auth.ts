@@ -1,8 +1,9 @@
-import NextAuth from "next-auth";
-import Credentials from "next-auth/providers/credentials";
-import { prisma } from "./prisma";
-import { PrismaAdapter } from "@auth/prisma-adapter";
-import { compareSync } from "bcryptjs";
+import { PrismaAdapter } from '@auth/prisma-adapter'
+import { compareSync } from 'bcryptjs'
+import NextAuth from 'next-auth'
+import Credentials from 'next-auth/providers/credentials'
+
+import { prisma } from './prisma'
 
 export const { signIn, signOut, auth, handlers } = NextAuth({
   /**
@@ -19,28 +20,25 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        email: { type: "email" },
-        password: { type: "password" },
+        email: { type: 'email' },
+        password: { type: 'password' },
       },
       authorize: async (credentials) => {
-        let user = null;
+        let user = null
 
-        const { email, password } = credentials;
+        const { email, password } = credentials
 
         user = await prisma.user.findFirst({
           where: {
             email: email as string,
           },
-        });
+        })
 
-        if (
-          !user ||
-          !compareSync(password as string, user.password as string)
-        ) {
-          throw new Error("Invalid credentials");
+        if (!user || !compareSync(password as string, user.password as string)) {
+          throw new Error('Invalid credentials')
         }
 
-        return user;
+        return user
       },
     }),
   ],
@@ -49,15 +47,15 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
    * 기본값은 jwt이나 adapter를 사용하는 경우 database로 변경
    */
   session: {
-    strategy: "jwt", // JSON Web Token 사용
+    strategy: 'jwt', // JSON Web Token 사용
     maxAge: 60 * 60 * 24, // 세션 만료 시간 1일
   },
   pages: {
-    signIn: "/auth/sign-in",
+    signIn: '/auth/sign-in',
   },
   callbacks: {
     authorized: async ({ auth }) => {
-      return !!auth;
+      return !!auth
     },
   },
-});
+})
