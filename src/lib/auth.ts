@@ -1,7 +1,8 @@
+import Credentials from 'next-auth/providers/credentials'
+import Credentials from 'next-auth/providers/credentials'
 import { PrismaAdapter } from '@auth/prisma-adapter'
 import { compareSync } from 'bcryptjs'
-import NextAuth from 'next-auth'
-import Credentials from 'next-auth/providers/credentials'
+import { compareSync } from 'bcryptjs'
 
 import { prisma } from './prisma'
 

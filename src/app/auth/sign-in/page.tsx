@@ -14,17 +14,17 @@ export default function SignIn() {
 
   return (
     <form action={credentialsAction} className="flex flex-col gap-4">
-      <label htmlFor="email" className="flex flex-col gap-2">
+      <label className="flex flex-col gap-2" htmlFor="email">
         Email
-        <input type="email" id="email" name="email" className="border border-white text-black" />
+        <input className="border border-white text-black" id="email" name="email" type="email" />
       </label>
-      <label htmlFor="password" className="flex flex-col gap-2">
+      <label className="flex flex-col gap-2" htmlFor="password">
         Password
         <input
-          type="password"
+          className="border border-white text-black"
           id="password"
           name="password"
-          className="border border-white text-black"
+          type="password"
         />
       </label>
       <button type="submit">Sign In</button>
