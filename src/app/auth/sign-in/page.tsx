@@ -13,21 +13,21 @@ export default function SignIn() {
   }
 
   return (
-    <form action={credentialsAction} className="flex flex-col gap-4">
-      <label className="flex flex-col gap-2" htmlFor="email">
+    <form action={credentialsAction} className='flex flex-col gap-4'>
+      <label className='flex flex-col gap-2' htmlFor='email'>
         Email
-        <input className="border border-white text-black" id="email" name="email" type="email" />
+        <input className='border border-white text-black' id='email' name='email' type='email' />
       </label>
-      <label className="flex flex-col gap-2" htmlFor="password">
+      <label className='flex flex-col gap-2' htmlFor='password'>
         Password
         <input
-          className="border border-white text-black"
-          id="password"
-          name="password"
-          type="password"
+          className='border border-white text-black'
+          id='password'
+          name='password'
+          type='password'
         />
       </label>
-      <button type="submit">Sign In</button>
+      <button type='submit'>Sign In</button>
     </form>
   )
 }
