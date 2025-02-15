@@ -55,6 +55,7 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
   },
   callbacks: {
     authorized: async ({ auth }) => {
+      // middleware에서 페이지 인증 처리를 여기서 다 처리 할 수 있는걸로 보임
       return !!auth
     },
   },
