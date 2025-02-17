@@ -20,8 +20,8 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
   providers: [
     Credentials({
       credentials: {
-        email: { type: 'email' },
-        password: { type: 'password' },
+        email: { type: 'email', placeholder: '이메일을 입력해주세요.' },
+        password: { type: 'password', placeholder: '비밀번호를 입력해주세요.' },
       },
       authorize: async (credentials) => {
         let user = null
@@ -50,9 +50,10 @@ export const { signIn, signOut, auth, handlers } = NextAuth({
     strategy: 'jwt', // JSON Web Token 사용
     maxAge: 60 * 60 * 24, // 세션 만료 시간 1일
   },
-  pages: {
-    signIn: '/auth/sign-in',
-  },
+  // 커스텀 페이지 설정
+  // pages: {
+  //   signIn: '/auth/sign-in',
+  // },
   callbacks: {
     authorized: async ({ auth }) => {
       // middleware에서 페이지 인증 처리를 여기서 다 처리 할 수 있는걸로 보임
