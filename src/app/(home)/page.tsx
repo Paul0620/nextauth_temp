@@ -9,7 +9,7 @@ export default function Home() {
 
   return (
     <>
-      메인페이지
+      메인페이지 테스트 입니다
       <div>{session?.user ? session.user.name : '정보없음'}</div>
       --------------------------------------------------
       <button onClick={() => signOut()}>로그아웃</button>
