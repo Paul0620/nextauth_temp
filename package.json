@@ -67,5 +67,10 @@
     "eslint-config-next": "15.2.0-canary.67",
     "tailwindcss": "^4",
     "typescript": "^5"
-  }
+  },
+  "main": "index.js",
+  "repository": "https://github.com/Paul0620/nextauth_temp.git",
+  "author": "paul <dlrhkdghsp@gmail.com>",
+  "license": "MIT",
+  "packageManager": "yarn@4.6.0"
 }
