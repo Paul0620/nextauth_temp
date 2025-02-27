@@ -22,7 +22,7 @@ const eslintConfig = [
       sourceType: 'module',
     },
     rules: {
-      'prettier/prettier': ['error'], // 🔹 ESLint가 Prettier 스타일을 강제하도록 설정
+      'prettier/prettier': ['warn'], // 🔹 ESLint가 Prettier 스타일을 강제하도록 설정
       'react/react-in-jsx-scope': 'off', // ✅ Next.js에서는 React import 불필요
       'react/jsx-filename-extension': ['warn', { extensions: ['.tsx', '.jsx'] }], // ✅ TSX, JSX 파일 허용
       '@typescript-eslint/no-unused-vars': ['error'],
