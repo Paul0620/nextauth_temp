@@ -6,6 +6,8 @@
 
 generator client {
   provider = "prisma-client-js"
+  output   = "../.prisma/client" // yarn pnp에서 사용하기 위한 설정
+  previewFeatures = ["prismaSchemaFolder"]
 }
 
 datasource db {
