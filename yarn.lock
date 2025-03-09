@@ -5,6 +5,12 @@ __metadata:
   version: 8
   cacheKey: 10c0
 
+".prisma@link:../.prisma/::locator=nextauth_temp%40workspace%3A.":
+  version: 0.0.0-use.local
+  resolution: ".prisma@link:../.prisma/::locator=nextauth_temp%40workspace%3A."
+  languageName: node
+  linkType: soft
+
 "@alloc/quick-lru@npm:^5.2.0":
   version: 5.2.0
   resolution: "@alloc/quick-lru@npm:5.2.0"
@@ -5882,6 +5888,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "nextauth_temp@workspace:."
   dependencies:
+    .prisma: "link:../.prisma/"
     "@auth/prisma-adapter": "npm:^2.8.0"
     "@eslint/eslintrc": "npm:^3.3.0"
     "@hookform/resolvers": "npm:^4.1.2"
