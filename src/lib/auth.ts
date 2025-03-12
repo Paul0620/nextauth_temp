@@ -29,4 +29,12 @@ export const { handlers, auth } = NextAuth({
       },
     }),
   ],
+  callbacks: {
+    authorized({ request, auth }) {
+      const isLoggedIn = !!auth?.user
+      if (request.nextUrl.pathname.startsWith('/api/') || isLoggedIn) {
+        return true
+      }
+    },
+  },
 })
