@@ -3,10 +3,17 @@ import NextAuth from 'next-auth'
 import { ZodError } from 'zod'
 import Credentials from 'next-auth/providers/credentials'
 import { signInSchema } from '@/lib/zod'
+import { PrismaAdapter } from '@auth/prisma-adapter'
+import { prisma } from './prisma'
 
 export const { handlers, auth } = NextAuth({
+  adapter: PrismaAdapter(prisma),
   providers: [
     Credentials({
+      credentials: {
+        email: { label: 'Email', type: 'email' },
+        password: { label: 'Password', type: 'password' },
+      },
       authorize: async (credentials) => {
         try {
           const { email, password } = await signInSchema.parseAsync(credentials)
