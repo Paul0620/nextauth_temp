@@ -1,34 +1,40 @@
-import { dirname } from 'path'
-import { fileURLToPath } from 'url'
 import { FlatCompat } from '@eslint/eslintrc'
+import { fileURLToPath } from 'url'
+import path from 'path'
 
 const __filename = fileURLToPath(import.meta.url)
-const __dirname = dirname(__filename)
+const __dirname = path.dirname(__filename)
 
 const compat = new FlatCompat({
   baseDirectory: __dirname,
 })
 
-const eslintConfig = [
-  ...compat.extends(
-    'next/core-web-vitals',
-    'next/typescript',
-    'plugin:prettier/recommended', // 🔹 Prettier와 ESLint를 함께 사용하도록 설정
-  ),
+export default [
+  ...compat.extends('next/core-web-vitals'),
+  ...compat.extends('next/typescript'),
+  ...compat.extends('plugin:prettier/recommended'),
+  ...compat.extends('plugin:tailwindcss/recommended'),
+
   {
     files: ['**/*.ts', '**/*.tsx', '**/*.js', '**/*.jsx'],
     languageOptions: {
       ecmaVersion: 'latest',
       sourceType: 'module',
     },
+    plugins: ['tailwindcss'], // ✅ TailwindCSS 플러그인 명시적으로 선언
     rules: {
-      'prettier/prettier': ['warn'], // 🔹 ESLint가 Prettier 스타일을 강제하도록 설정
-      'react/react-in-jsx-scope': 'off', // ✅ Next.js에서는 React import 불필요
-      'react/jsx-filename-extension': ['warn', { extensions: ['.tsx', '.jsx'] }], // ✅ TSX, JSX 파일 허용
+      'tailwindcss/classnames-order': ['warn'], // 🚨 경고만 띄움 (자동 정렬 X)
+      'prettier/prettier': ['warn'], // ✅ Prettier 적용 but 자동 정렬 X
+
+      // ✅ Next.js 환경 최적화
+      'react/react-in-jsx-scope': 'off',
+      'react/jsx-filename-extension': ['warn', { extensions: ['.tsx', '.jsx'] }],
+
+      // ✅ TypeScript 관련 규칙
       '@typescript-eslint/no-unused-vars': ['error'],
+
+      // ✅ 콘솔 로그 제한 (warn, error는 허용)
       'no-console': ['warn', { allow: ['warn', 'error'] }],
     },
   },
 ]
-
-export default eslintConfig
