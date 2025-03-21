@@ -23,7 +23,7 @@ export default [
     },
     plugins: ['tailwindcss'], // ✅ TailwindCSS 플러그인 명시적으로 선언
     rules: {
-      'tailwindcss/classnames-order': ['warn'], // 🚨 경고만 띄움 (자동 정렬 X)
+      'tailwindcss/classnames-order': ['warn'], // 단순 경고만 표시
       'prettier/prettier': ['warn'], // ✅ Prettier 적용 but 자동 정렬 X
 
       // ✅ Next.js 환경 최적화
